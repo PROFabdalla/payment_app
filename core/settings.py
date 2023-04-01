@@ -13,6 +13,7 @@ from datetime import timedelta
 
 AUTH_USER_MODEL = "user_app.User"
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,7 +67,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -173,3 +174,11 @@ REST_KNOX = {
     "USER_SERIALIZER": "user_app.serializers.UserSerializers",
     "TOKEN_TTL": timedelta(hours=48),
 }
+
+
+PRODUCT_PRICE = "price_1Mf1U0JXetuhxuuut3u5Hrml"
+REDIRECT_DOMAIN = "http://127.0.0.1:8000/"
+STRIPE_SECRET_KEY_TEST = "sk_test_51MY6sxJXetuhxuuuy8bCW69gDQGDcAKzR50zwnNiRRLjr1awpf4EFgDJypUNcDXpiBinrQ9KLVvO3eDI4c8AHhuY00g2QzFWfB"
+STRIPE_WEBHOOK_SECRET_TEST = (
+    "whsec_4c6008dff57b6823b2425d44bafde151d17a1f23618a936b5c6a6db60e0ed4ee"
+)

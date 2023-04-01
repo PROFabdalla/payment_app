@@ -136,3 +136,5 @@ migrations/*
 migrations/
 migrations
 my-notes.txt
+
+conf_cli.txt

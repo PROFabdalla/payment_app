@@ -1,0 +1,12 @@
+{%extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="form-control">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary mt-3">create ..</button>
+    </form>
+</div>
+    {%endblock%}
