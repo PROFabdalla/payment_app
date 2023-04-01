@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     # apps
     "user_app",
     "user_payment",
+    "product",
+    "order",
     # packages
     "rest_framework",
     "rest_framework.authtoken",
