@@ -4,6 +4,17 @@ from django.core.validators import MinValueValidator
 from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
+from django.core.files.storage import FileSystemStorage
+
+
+def image_default():
+    fss = FileSystemStorage()
+    folder_path = "product/defaults/"
+    try:
+        filename = fss.listdir(folder_path)[1][0]
+        return folder_path + filename
+    except Exception as e:
+        print(e)
 
 
 class Product(models.Model):
@@ -33,6 +44,7 @@ class Product(models.Model):
         verbose_name=("Image"),
         blank=True,
         null=True,
+        default=image_default,
     )
     stock = models.PositiveIntegerField(
         validators=[MinValueValidator(1)],

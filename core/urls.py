@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from drf_spectacular.views import (
     SpectacularAPIView,
@@ -16,4 +18,9 @@ urlpatterns = [
     # # ------ apps ---- $
     path("auth/", include("user_app.urls")),
     path("user_payment/", include("user_payment.urls")),
+    path("product/", include("product.urls")),
+    path("order/", include("order.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
