@@ -23,6 +23,11 @@ class Order(models.Model):
         default=order_status.PLACED,
     )
 
+    def total_price(self):
+        items = self.items.all()
+        total = sum([item.product.price.amount * item.quantity for item in items])
+        return float(total) or 0
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name="items", on_delete=models.CASCADE)

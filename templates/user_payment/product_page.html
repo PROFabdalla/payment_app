@@ -3,10 +3,13 @@
 {% load static %}
 
 {% block body %}
-<div class="form-control">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-primary mt-3">create ..</button>
-    </form>
+<div class="container mt-5">
+    <div class="form-control mt-5">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>click here to check_out</h2>
+            <button type="submit" class="btn btn-outline-primary mt-3 w-100">create ..</button>
+        </form>
+    </div>
 </div>
     {%endblock%}

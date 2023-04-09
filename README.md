@@ -9,4 +9,4 @@ payment app with custom user and strip
     - djoser
     - drf_spectacular (swagger)
     - django_extensions
-    - strip
+    - stripe

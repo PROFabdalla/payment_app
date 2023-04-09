@@ -26,6 +26,11 @@ class OrderSerializer(FlexFieldsModelSerializer):
         #     "created_by": (ProductUserSerializer, {"many": False}),
         # }
 
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep["total_price"] = instance.total_price()
+        return rep
+
     def create(self, validated_data):
         items = validated_data.pop("items")
         user = self.context["request"].user
