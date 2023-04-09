@@ -7,16 +7,31 @@ import time
 from django.http import HttpResponse
 from user_payment.models import UserPayment
 from django.views.decorators.csrf import csrf_exempt
+from order.models import Order
 
 
 @login_required(login_url="/auth/login/")
-def product_page(request):
+def product_page(request, id):
     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
+    order = Order.objects.filter(pk=id).first()
+    price = round(order.total_price(), 2)
+    print(order, "------------------")
     # ------------ when customer click pay_now ------ #
     # ---------- create stripe checkout_session ---------- #
     if request.method == "POST":
         checkout_session = stripe.checkout.Session.create(
-            line_items=[{"price": settings.PRODUCT_PRICE, "quantity": 1}],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "USD",
+                        "product_data": {
+                            "name": order.order_no,
+                        },
+                        "unit_amount_decimal": price,
+                    },
+                    "quantity": 1,
+                }
+            ],
             mode="payment",
             customer_creation="always",
             success_url="http://127.0.0.1:8000/user_payment/payment_successful/?session_id={CHECKOUT_SESSION_ID}",
@@ -70,4 +85,4 @@ def stripe_webhook(request):
         user_payment = UserPayment.objects.get(stripe_checkout_id=session_id)
         user_payment.payment_bool = True
         user_payment.save()
-        return HttpResponse(status=200)
+    return HttpResponse(status=200)

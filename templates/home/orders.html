@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+{% if user.is_authenticated %}
+{% for order in orders %} 
+        <div class="container d-flex justify-content-center mb-3 p-md-3" style="border: solid black 1px;border-radius: 15px;background-color: rgba(228, 240, 163, 0.281);box-shadow: 5px 3px 3px 5px;margin-bottom: 20px;">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between mb-2">    
+                    <h5 style="text-align: center;" >order number : {{ order.order_no }}</h5>
+                    <h5 style="text-align: center;" >created by : {{ order.created_by }}</h5>
+                    <h5 style="text-align: center;" >price: {{ order.total_price }}</h5>
+                </div>
+                <div class="col-12 mb-2">    
+                    <h6>products :</h6>
+                    {% for item in order.items.all %} 
+                        <span class="text-muted"> {{ item.product.title }} ,</span>
+                    {% endfor %}
+                </div>
+                <a class="mb-5" style="text-decoration: none;" href="{% url 'user_payment:product_page' order.id %}"><div style="width: 100%;" class="btn btn-outline-primary">check out</div></a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+{%endblock%}
