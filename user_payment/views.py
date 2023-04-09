@@ -1,13 +1,14 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+import time
+
 import stripe
 from django.conf import settings
-from django.shortcuts import redirect
-import time
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from user_payment.models import UserPayment
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
+
 from order.models import Order
+from user_payment.models import UserPayment
 
 
 @login_required(login_url="/auth/login/")

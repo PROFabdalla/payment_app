@@ -1,7 +1,7 @@
-from rest_framework.authentication import BasicAuthentication
-from rest_framework import exceptions
-from knox.auth import TokenAuthentication
 from drf_spectacular.extensions import OpenApiAuthenticationExtension
+from knox.auth import TokenAuthentication
+from rest_framework import exceptions
+from rest_framework.authentication import BasicAuthentication
 
 
 class CustomTokenAuthentication(TokenAuthentication):

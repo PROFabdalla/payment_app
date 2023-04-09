@@ -1,8 +1,9 @@
-from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 from order.models import Order
 from order.serializers.order import OrderSerializer
-from django.shortcuts import render
 
 
 class OrderView(generics.ListCreateAPIView):

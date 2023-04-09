@@ -1,10 +1,11 @@
-from django.db import models
-from user_app.models import User
+from django.core.files.storage import FileSystemStorage
 from django.core.validators import MinValueValidator
+from django.db import models
 from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
-from django.core.files.storage import FileSystemStorage
+
+from user_app.models import User
 
 
 def image_default():

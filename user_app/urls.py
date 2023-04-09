@@ -1,7 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from user_app.views import CustomUserViewSet, CustomLoginView
+from django.urls import include, path
 from knox.views import LogoutAllView, LogoutView
+from rest_framework.routers import DefaultRouter
+
+from user_app.views import CustomLoginView, CustomUserViewSet
 
 app_name = "user_app"
 

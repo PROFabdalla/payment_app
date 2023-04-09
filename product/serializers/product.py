@@ -1,6 +1,7 @@
-from rest_flex_fields import FlexFieldsModelSerializer
-from product.models import Product
 from djmoney.contrib.django_rest_framework import MoneyField
+from rest_flex_fields import FlexFieldsModelSerializer
+
+from product.models import Product
 from user_app.models import User
 
 

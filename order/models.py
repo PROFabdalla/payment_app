@@ -1,6 +1,7 @@
-from django.db import models
-from user_app.models import User
 from django.core.validators import MinValueValidator
+from django.db import models
+
+from user_app.models import User
 
 
 class order_status(models.TextChoices):

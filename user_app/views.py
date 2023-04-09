@@ -1,13 +1,12 @@
-from djoser.views import UserViewSet, TokenCreateView
-from user_app.serializers import (
-    CustomUserCreateSerializer,
-    CustomTokenCreateSerializers,
-)
-from rest_framework.permissions import AllowAny
 from django.contrib.auth import get_user_model, login
-from rest_framework import status
-from rest_framework.response import Response
+from djoser.views import TokenCreateView, UserViewSet
 from knox.views import LoginView
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+
+from user_app.serializers import (CustomTokenCreateSerializers,
+                                  CustomUserCreateSerializer)
 
 User = get_user_model()
 
