@@ -3,7 +3,7 @@ from user_payment import views
 
 app_name = "user_payment"
 urlpatterns = [
-    # --- page that has pay now bottom that initiate payment session -- #
+    # --- page that has pay now bottom that initiate payment session for test-- #
     path("product_page/<int:id>/", views.product_page, name="product_page"),
     # ------- successful page after payment success --------- #
     path("payment_successful/", views.payment_successful, name="product_page"),
