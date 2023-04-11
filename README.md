@@ -9,9 +9,11 @@ payment app with custom user and strip
     - djoser
     - drf_spectacular (swagger)
     - django_extensions
-    - stripe
+    - stripe (payment)
+    - celery (sending emails)
 
 ### must read before start
 
     - user.md file
-    - user_payment/stripe_confg.csv folder
+    - stripe_confg.csv folder
+    - sending_emails file

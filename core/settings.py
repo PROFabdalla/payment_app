@@ -40,11 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # apps
-    "user_app",
-    "user_payment",
-    "product",
-    "order",
     # packages
     "rest_framework",
     "rest_framework.authtoken",
@@ -52,6 +47,12 @@ INSTALLED_APPS = [
     "djoser",
     "drf_spectacular",
     "django_extensions",
+    # apps
+    "user_app",
+    "user_payment",
+    "product",
+    "order",
+    "sending_mail",
 ]
 
 MIDDLEWARE = [
@@ -187,3 +188,22 @@ STRIPE_SECRET_KEY_TEST = "sk_test_51MY6sxJXetuhxuuuy8bCW69gDQGDcAKzR50zwnNiRRLjr
 STRIPE_WEBHOOK_SECRET_TEST = (
     "whsec_4c6008dff57b6823b2425d44bafde151d17a1f23618a936b5c6a6db60e0ed4ee"
 )
+
+
+# --------------- celery -------------------- #
+CELERY_BROKER_URL = "redis://127.0.0.1:6379"  # redis end_point
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TASK_SERIALIZER = "json"
+CELERY_TIMEZONE = "Africa/Cairo"
+
+CELERY_RESULT_BACKEND = "django-db"
+
+# ------------- email config --------------------- #
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "abdallaamer101@gmail.com"
+EMAIL_HOST_PASSWORD = "wbmpmpgbyqmpghuo"
+DEFAULT_FROM_EMAIL = "default from email"

@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from order.models import Order
 from user_payment.models import UserPayment
+from sending_mail.tasks import payment_succeed_mail
 
 
 @login_required(login_url="/auth/login/")
@@ -81,6 +82,7 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     if event["type"] == "checkout.session.completed":
+        payment_succeed_mail.delay()
         session = event["data"]["object"]
         session_id = session.get("id", None)
         user_payment = UserPayment.objects.get(stripe_checkout_id=session_id)
